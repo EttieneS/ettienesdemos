@@ -18,7 +18,7 @@
     echo "</p>";
 
     echo "<p>Password: ";
-    echo form_password('password');
+    echo form_password('password', $this->input->post('password'));
     echo "</p>";
 
     echo "</p>";
@@ -32,23 +32,3 @@
     <a href='<?php echo base_url()."index.php/Main/signin"; ?>'>Sign In</a>
 </body>
 </html>
-In application/views folder, data.php file is made.
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Welcome, You are successfully logged in.</h1>
-
-    <?php
-    echo "<pre>";
-    echo print_r($this->session->all_userdata());
-    echo "</pre>";
-    ?>
-
-    <a href='<?php echo base_url()."index.php/Main/logout"; ?>'>Logout</a>
-
-</body>
-</html>  

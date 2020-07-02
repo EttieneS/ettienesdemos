@@ -10,12 +10,12 @@ class Main extends CI_Controller {
 
     public function login()
     {
-        $this->load->view('login_view');
+      $this->load->view('login_view');
     }
 
     public function signin()
     {
-        $this->load->view('signin');
+      $this->load->view('signin');
     }
 
     public function data()
@@ -35,8 +35,9 @@ class Main extends CI_Controller {
 
     public function login_action()
     {
-        $this->load->helper('security');
-        $this->load->library('form_validation');
+      $this->load->helper('security');
+      $this->load->library('form_validation');
+
 
         $this->form_validation->set_rules('username', 'Username:', 'required|trim|xss_clean|callback_validation');
         $this->form_validation->set_rules('password', 'Password:', 'required|trim');
@@ -45,10 +46,11 @@ class Main extends CI_Controller {
         {
             $data = array(
                 'username' => $this->input->post('username'),
+                'password' => $this->input->post('password'),
                 'currently_logged_in' => 1
-                );
-                    $this->session->set_userdata($data);
-                redirect('Main/data');
+            );
+            $this->session->set_userdata($data);
+            redirect('Main/data');
         }
         else {
             $this->load->view('login_view');
@@ -83,7 +85,6 @@ class Main extends CI_Controller {
 
         if ($this->login_model->log_in_correctly())
         {
-
             return true;
         } else {
             $this->form_validation->set_message('validation', 'Incorrect username/password.');
@@ -96,6 +97,5 @@ class Main extends CI_Controller {
         $this->session->sess_destroy();
         redirect('Main/login');
     }
-
 }
-?>  
+?>
