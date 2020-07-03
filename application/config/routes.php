@@ -52,3 +52,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['agent'] = "agent/index";
+$route['agent/(:num)'] = "agent/show/$1";
+$route['agentCreate']['post'] = "agent/store";
+$route['agentEdit/(:any)'] = "agent/edit/$1";
+$route['agentUpdate/(:any)']['put'] = "agent/update/$1";
+$route['agentDelete/(:any)']['delete'] = "agent/delete/$1";
