@@ -39,22 +39,22 @@ class Main extends CI_Controller {
       $this->load->library('form_validation');
 
 
-        $this->form_validation->set_rules('username', 'Username:', 'required|trim|xss_clean|callback_validation');
-        $this->form_validation->set_rules('password', 'Password:', 'required|trim');
+      $this->form_validation->set_rules('username', 'Username:', 'required|trim|xss_clean|callback_validation');
+      $this->form_validation->set_rules('password', 'Password:', 'required|trim');
 
-        if ($this->form_validation->run())
-        {
-            $data = array(
-                'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
-                'currently_logged_in' => 1
-            );
-            $this->session->set_userdata($data);
-            redirect('Main/data');
-        }
-        else {
-            $this->load->view('login_view');
-        }
+      if ($this->form_validation->run())
+      {
+          $data = array(
+              'username' => $this->input->post('username'),
+              'password' => $this->input->post('password'),
+              'currently_logged_in' => 1
+          );
+          $this->session->set_userdata($data);
+          redirect('Main/data');
+      }
+      else {
+          $this->load->view('login_view');
+      }
     }
 
     public function signin_validation()

@@ -41,15 +41,15 @@ class Agent extends CI_Controller {
 
    public function store()
    {
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('agent_name', 'Agent Name', 'required');
+        $this->form_validation->set_rules('agent_surname', 'Surname', 'required');
 
         if ($this->form_validation->run() == FALSE){
             $this->session->set_flashdata('errors', validation_errors());
-            redirect(base_url('itemCRUD/create'));
+            redirect(base_url('agent/create'));
         }else{
            $this->itemCRUD->insert_item();
-           redirect(base_url('itemCRUD'));
+           redirect(base_url('agent'));
         }
     }
 
