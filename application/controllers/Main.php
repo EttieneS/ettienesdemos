@@ -22,10 +22,18 @@ class Main extends CI_Controller {
     {
         if ($this->session->userdata('currently_logged_in'))
         {
-            $this->load->view('data');
+            $this->load->view('bonobo');//'data');
         } else {
             redirect('Main/invalid');
         }
+    }
+
+    public function bonobo()
+    {
+      header("Access-Control-Allow-Origin: *");
+      $data = array();
+      $this->template->set('title', 'Home');
+      $this->template->load('default_layout', 'contents' , 'home', $data);
     }
 
     public function invalid()
